@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Dtos\Comment\" />
+    <Folder Include="Mappers\" />
   </ItemGroup>
 
 </Project>
