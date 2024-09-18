@@ -5,20 +5,25 @@ namespace api.Mappers
 {
     public static class StockMappers
     {
-        public static StockDto ToStockDto(this Stock StockModel){
-            return new StockDto{
+        public static StockDto ToStockDto(this Stock StockModel)
+        {
+            return new StockDto
+            {
                 Id = StockModel.Id,
                 Symbol = StockModel.Symbol,
                 CompanyName = StockModel.CompanyName,
                 Purchase = StockModel.Purchase,
                 LastDiv = StockModel.LastDiv,
                 Industry = StockModel.Industry,
-                MarketCap = StockModel.MarketCap
+                MarketCap = StockModel.MarketCap,
+                Comments = StockModel.Comments.Select(c => c.ToCommentDto()).ToList()
             };
         }
 
-        public static Stock ToStockFromCreateDto(this CreateStockRequestDto createStockRequestDto){
-            return new Stock{
+        public static Stock ToStockFromCreateDto(this CreateStockRequestDto createStockRequestDto)
+        {
+            return new Stock
+            {
                 Symbol = createStockRequestDto.Symbol,
                 CompanyName = createStockRequestDto.CompanyName,
                 Purchase = createStockRequestDto.Purchase,
