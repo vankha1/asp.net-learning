@@ -65,7 +65,9 @@ namespace api.Repository
                 }
             }
 
-            return await stocks.ToListAsync();
+            var skipNumber = (query.PageNumber - 1) * query.PageSize; // skip n first elements, just get the remaining elements. In the meantime, Take(n) means take n first elements.
+
+            return await stocks.Skip(skipNumber).Take(query.PageSize).ToListAsync();
         }
 
         public async Task<Stock?> GetByIdAsync(int id)
