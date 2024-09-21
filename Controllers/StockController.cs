@@ -27,9 +27,9 @@ public class StockController : ControllerBase
     public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
     {
         var stocks = await _stockRepo.GetAllAsync(query);
-        var stockDto = stocks.Select(s => s.ToStockDto()); // select: return an immutable list
+        var stockDto = stocks.Select(s => s.ToStockDto()).ToList(); // select: return an immutable list
 
-        return Ok(stocks);
+        return Ok(stockDto);
     }
 
     [HttpGet("{id:int}")]
