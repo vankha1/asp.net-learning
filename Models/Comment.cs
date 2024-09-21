@@ -15,4 +15,7 @@ public class Comment
 
     public Stock? Stock { get; set; } // Navigation property
 
+    public string? AppUserId { get; set; }
+    public AppUser? AppUser { get; set; }
+
 }
